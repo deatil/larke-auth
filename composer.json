@@ -1,0 +1,49 @@
+{
+    "name": "lake/larke-auth",
+    "keywords": [
+        "laravel",
+        "casbin",
+        "permission",
+        "access-control",
+        "authorization",
+        "rbac",
+        "acl",
+        "abac",
+        "authz"
+    ],
+    "description": "An authorization library that supports access control models like ACL, RBAC, ABAC in Laravel. ",
+    "authors": [
+        {
+            "name": "deatil",
+            "email": "deatil@github.com",
+            "homepage": "https://github.com/deatil"
+        }
+    ],
+    "license": "Apache-2.0",
+    "require": {
+        "php": "^7.3",
+        "laravel/framework": "^8.0",
+        "casbin/casbin": "~2.0",
+        "casbin/psr3-bridge": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Larke\\Auth\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Larke\\Auth\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Larke\\Auth\\ServiceProvider"
+            ],
+            "aliases": {
+                "Enforcer": "Larke\\Auth\\Facades\\Enforcer"
+            }
+        }
+    }
+}
