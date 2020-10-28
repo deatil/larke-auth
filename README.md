@@ -61,7 +61,7 @@ To publish the config, run the vendor publish command:
 ```
 php artisan vendor:publish --tag=larke-auth-config
 
-php artisan vendor:publish --tag=larke-auth-migrations
+php artisan larke-auth:install
 ```
 
 This will create a new model config file named `config/larkeauth-rbac-model.conf` and a new larkeauth config file named `config/larkeauth.php`.

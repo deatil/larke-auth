@@ -15,11 +15,11 @@ class ServiceProvider extends BaseServiceProvider
     public function boot()
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([__DIR__ . '/../database/migrations' => database_path('migrations')], 'larke-auth-migrations');
             $this->publishes([__DIR__ . '/../config/larkeauth-rbac-model.conf' => config_path('larkeauth-rbac-model.conf')], 'larke-auth-config');
             $this->publishes([__DIR__ . '/../config/larkeauth.php' => config_path('larkeauth.php')], 'larke-auth-config');
 
             $this->commands([
+                Commands\Install::class,
                 Commands\GroupAdd::class,
                 Commands\PolicyAdd::class,
                 Commands\RoleAssign::class,
@@ -30,7 +30,7 @@ class ServiceProvider extends BaseServiceProvider
 
         $this->bootObserver();
     }
-
+    
     /**
      * Boot Observer.
      *
