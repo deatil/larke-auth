@@ -3,8 +3,10 @@
 namespace Larke\Auth\Middlewares;
 
 use Closure;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+
 use Larke\Auth\Exceptions\UnauthorizedException;
 use Larke\Auth\Facades\Enforcer;
 
@@ -24,7 +26,8 @@ class RequestMiddleware
      */
     public function handle($request, Closure $next, ...$guards)
     {
-        if (Auth::guest()) {
+        $identifier = app('larke.auth.user')->getIdentifier();
+        if ($identifier == 0) {
             throw new UnauthorizedException();
         }
 
@@ -43,11 +46,7 @@ class RequestMiddleware
      */
     protected function authorize(Request $request, array $guards)
     {
-        $user = Auth::user();
-        $identifier = $user->getAuthIdentifier();
-        if (method_exists($user, 'getAuthzIdentifier')) {
-            $identifier = $user->getAuthzIdentifier();
-        }
+        $identifier = app('larke.auth.user')->getIdentifier();
 
         if (empty($guards)) {
             if (Enforcer::enforce($identifier, $request->getPathInfo(), $request->method())) {

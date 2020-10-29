@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 use Larke\Auth\Models\Rule;
 use Larke\Auth\Observers\RuleObserver;
+use Larke\Auth\Contracts\AuthUser as AuthUserContract;
 
 class ServiceProvider extends BaseServiceProvider
 {
@@ -27,6 +28,9 @@ class ServiceProvider extends BaseServiceProvider
         }
 
         $this->mergeConfigFrom(__DIR__ . '/../config/larkeauth.php', 'larkeauth');
+        
+        // 绑定
+        $this->app->bind('larke.auth.user', AuthUserContract::class);
 
         $this->bootObserver();
     }
