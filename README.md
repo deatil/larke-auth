@@ -211,9 +211,11 @@ See [Casbin API](https://casbin.org/docs/en/management-api) for more APIs.
 
 Before,you need create a file:
 ~~~
-namespace App\Contracts;
+namespace App\Auth;
 
-class YourAuthUser extends \Larke\Auth\Contracts\AuthUser
+use Larke\Auth\Contracts\AuthUser;
+
+class YourAuthUser extends AuthUser
 {
     /**
      * @return string|int
@@ -226,9 +228,12 @@ class YourAuthUser extends \Larke\Auth\Contracts\AuthUser
 }
 ~~~
 
-Then, you can bind `YourAuthUser` class:
+Then, you need bind `YourAuthUser` class:
 ~~~
-$this->app->bind(\Larke\Auth\Contracts\AuthUser::class, \App\Contracts\YourAuthUser:class);
+$this->app->bind(
+    \Larke\Auth\Contracts\AuthUser::class, 
+    \App\Auth\YourAuthUser:class
+);
 ~~~
 
 This package comes with `EnforcerMiddleware`, `RequestMiddleware` middlewares. You can add them inside your `app/Http/Kernel.php` file.
