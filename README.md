@@ -60,17 +60,15 @@ To publish the config, run the vendor publish command:
 
 ```
 php artisan vendor:publish --tag=larke-auth-config
-
-php artisan larke-auth:install
 ```
 
 This will create a new model config file named `config/larkeauth-rbac-model.conf` and a new larkeauth config file named `config/larkeauth.php`.
 
 
-To migrate the migrations, run the migrate command:
+To install auth:
 
 ```
-php artisan migrate
+php artisan larke-auth:install
 ```
 
 This will create a new table named `rules`
@@ -210,6 +208,28 @@ Enforcer::hasPermissionForUser('eve', 'articles', 'read');  // true or false
 See [Casbin API](https://casbin.org/docs/en/management-api) for more APIs.
 
 ### Using a middleware
+
+Before,you need create a file:
+~~~
+namespace App\Contracts;
+
+class YourAuthUser extends \Larke\Auth\Contracts\AuthUser
+{
+    /**
+     * @return string|int
+     */
+    public function getIdentifier()
+    {
+        $id = ...;
+        return $id;
+    }
+}
+~~~
+
+Then, you can bind `YourAuthUser` class:
+~~~
+$this->app->bind(\Larke\Auth\Contracts\AuthUser::class, \App\Contracts\YourAuthUser:class);
+~~~
 
 This package comes with `EnforcerMiddleware`, `RequestMiddleware` middlewares. You can add them inside your `app/Http/Kernel.php` file.
 

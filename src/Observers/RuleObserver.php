@@ -6,6 +6,11 @@ use Larke\Auth\Models\Rule;
 
 class RuleObserver
 {
+    public function creating(Rule $log)
+    {
+        $log->id = md5(mt_rand(100000, 999999).microtime());
+    }
+    
     public function saved(Rule $rule)
     {
         $rule->refreshCache();

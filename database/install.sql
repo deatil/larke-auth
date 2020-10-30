@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS `pre__larke_rules`;
 CREATE TABLE `pre__larke_rules` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` varchar(32) NOT NULL DEFAULT '',
   `ptype` varchar(255) DEFAULT NULL,
   `v0` varchar(255) DEFAULT NULL,
   `v1` varchar(255) DEFAULT NULL,
@@ -11,4 +11,4 @@ CREATE TABLE `pre__larke_rules` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;

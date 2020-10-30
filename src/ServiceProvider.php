@@ -28,9 +28,6 @@ class ServiceProvider extends BaseServiceProvider
         }
 
         $this->mergeConfigFrom(__DIR__ . '/../config/larkeauth.php', 'larkeauth');
-        
-        // 绑定
-        $this->app->bind('larke.auth.user', AuthUserContract::class);
 
         $this->bootObserver();
     }
@@ -50,6 +47,8 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
+        $this->app->bind('larke.auth.user', AuthUserContract::class);
+        
         $this->app->singleton('enforcer', function ($app) {
             return new EnforcerManager($app);
         });
