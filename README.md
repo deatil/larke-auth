@@ -210,8 +210,9 @@ See [Casbin API](https://casbin.org/docs/en/management-api) for more APIs.
 ### Using a middleware
 
 Before,you need create a file:
-~~~
-<php?
+
+```php
+<?php
 
 namespace App\Auth;
 
@@ -231,7 +232,8 @@ class YourAuthUser extends AuthUser
 ~~~
 
 Then, you need bind `YourAuthUser` class:
-~~~
+
+```php
 $this->app->bind(
     \Larke\Auth\Contracts\AuthUser::class, 
     \App\Auth\YourAuthUser:class
