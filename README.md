@@ -229,7 +229,7 @@ class YourAuthUser extends AuthUser
         return $id;
     }
 }
-~~~
+```
 
 Then, you need bind `YourAuthUser` class:
 
@@ -238,7 +238,7 @@ $this->app->bind(
     \Larke\Auth\Contracts\AuthUser::class, 
     \App\Auth\YourAuthUser:class
 );
-~~~
+```
 
 This package comes with `EnforcerMiddleware`, `RequestMiddleware` middlewares. You can add them inside your `app/Http/Kernel.php` file.
 
