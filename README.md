@@ -211,6 +211,8 @@ See [Casbin API](https://casbin.org/docs/en/management-api) for more APIs.
 
 Before,you need create a file:
 ~~~
+<php?
+
 namespace App\Auth;
 
 use Larke\Auth\Contracts\AuthUser;
