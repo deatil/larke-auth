@@ -4,8 +4,7 @@ namespace Larke\Auth\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
-
-use Encore\Admin\Auth\Database\Menu;
+use Illuminate\Support\Facades\File;
 
 /**
  * 安装脚本
@@ -37,11 +36,15 @@ class Install extends Command
     {
         // 执行数据库
         $installSqlFile = __DIR__.'/../../database/install.sql';
-        $dbPrefix = DB::getConfig('prefix');
-        $sqls = file_get_contents($installSqlFile);
-        $sqls = str_replace('pre__', $dbPrefix, $sqls);
-        DB::unprepared($sqls);
         
-        $this->info(__('larke-auth 安装成功'));
+        $sqlData = File::get($installSqlFile);
+        if (empty($sqlData)) {
+            $this->line("<error>Sql file is empty !</error> ");
+            return;
+        }
+        
+        $dbPrefix = DB::getConfig('prefix');
+        $sqlContent = str_replace('pre__', $dbPrefix, $sqlData);
+        DB::unprepared($sqlContent);
     }
 }
