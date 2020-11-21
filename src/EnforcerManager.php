@@ -2,14 +2,17 @@
 
 namespace Larke\Auth;
 
+use InvalidArgumentException;
+
+use Illuminate\Support\Arr;
+
 use Casbin\Bridge\Logger\LoggerBridge;
 use Casbin\Enforcer;
 use Casbin\Model\Model;
 use Casbin\Log\Log;
+
 use Larke\Auth\Contracts\Factory;
 use Larke\Auth\Models\Rule;
-use Illuminate\Support\Arr;
-use InvalidArgumentException;
 
 /**
  * @mixin \Casbin\Enforcer

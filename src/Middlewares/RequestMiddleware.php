@@ -27,7 +27,7 @@ class RequestMiddleware
     public function handle($request, Closure $next, ...$guards)
     {
         $identifier = app('larke.auth.user')->getIdentifier();
-        if ($identifier == 0) {
+        if ($identifier === false) {
             throw new UnauthorizedException();
         }
 

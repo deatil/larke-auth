@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS `pre__larke_rules`;
 CREATE TABLE `pre__larke_rules` (
-  `id` varchar(32) NOT NULL DEFAULT '',
+  `id` char(32) NOT NULL DEFAULT '',
   `ptype` varchar(255) DEFAULT NULL,
   `v0` varchar(255) DEFAULT NULL,
   `v1` varchar(255) DEFAULT NULL,

@@ -26,11 +26,11 @@ class EnforcerMiddleware
     public function handle($request, Closure $next, ...$args)
     {
         $identifier = app('larke.auth.user')->getIdentifier();
-        if ($identifier == 0) {
+        if ($identifier === false) {
             throw new UnauthorizedException();
         }
 
-        if (!Enforcer::enforce($identifier, ...$args)) {
+        if (! Enforcer::enforce($identifier, ...$args)) {
             throw new UnauthorizedException();
         }
 
