@@ -9,7 +9,10 @@
         "rbac",
         "acl",
         "abac",
-        "authz"
+        "lake",
+        "larke",
+        "auth",
+        "larke-auth"
     ],
     "description": "An authorization library that supports access control models like ACL, RBAC, ABAC in Laravel. ",
     "authors": [
