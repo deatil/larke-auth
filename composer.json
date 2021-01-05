@@ -15,6 +15,9 @@
         "larke-auth"
     ],
     "description": "An authorization library that supports access control models like ACL, RBAC, ABAC in Laravel. ",
+    "homepage": "https://github.com/deatil/larke-auth",
+    "type": "library",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "deatil",
@@ -22,7 +25,6 @@
             "homepage": "https://github.com/deatil"
         }
     ],
-    "license": "Apache-2.0",
     "require": {
         "php": "^7.3",
         "laravel/framework": "^8.0",
