@@ -6,6 +6,7 @@
     <strong>larke-auth is an authorization library for the laravel framework.</strong>    
 </p>
 
+The `code` is from [laravel-authz](https://github.com/php-casbin/laravel-authz)
 
 It's based on [Casbin](https://github.com/php-casbin/php-casbin), an authorization library that supports access control models like ACL, RBAC, ABAC.
 
