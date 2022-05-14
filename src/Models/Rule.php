@@ -114,6 +114,6 @@ class Rule extends Model
      */
     protected function config($key = null, $default = null)
     {
-        return config('larkeauth.'.$this->guard.'.'.$key, $default);
+        return config('larkeauth.guards.'.$this->guard.'.'.$key, $default);
     }
 }

@@ -63,8 +63,11 @@ To publish the config, run the vendor publish command:
 php artisan vendor:publish --tag=larke-auth-config
 ```
 
-This will create a new model config file named `config/larkeauth-rbac-model.conf` and a new larkeauth config file named `config/larkeauth.php`.
+This will create a new model config file named `config/larkeauth-rbac-model.conf.bak` and a new larkeauth config file named `config/larkeauth.php.bak`.
 
+You need copy the file `config/larkeauth-rbac-model.conf.larkeauth` to file `config/larkeauth-rbac-model.conf` 
+
+and copy the file `config/larkeauth.php.larkeauth` to file `config/larkeauth.php`
 
 To install auth:
 
@@ -265,7 +268,7 @@ Route::group(['middleware' => ['enforcer:articles,read']], function () {
 
 #### HTTP Request Middleware ( RESTful is also supported )
 
-If you need to authorize a Request，you need to define the model configuration first in `config/larkeauth-rbac-model.conf`:
+If you need to authorize a Request, you need to define the model configuration first in `config/larkeauth-rbac-model.conf`:
 
 ```ini
 [request_definition]

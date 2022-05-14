@@ -16,8 +16,10 @@ class ServiceProvider extends BaseServiceProvider
     public function boot()
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([__DIR__ . '/../config/larkeauth-rbac-model.conf' => config_path('larkeauth-rbac-model.conf')], 'larke-auth-config');
-            $this->publishes([__DIR__ . '/../config/larkeauth.php' => config_path('larkeauth.php')], 'larke-auth-config');
+            $this->publishes([
+                __DIR__ . '/../config/larkeauth-rbac-model.conf' => config_path('larkeauth-rbac-model.conf.larkeauth'),
+                __DIR__ . '/../config/larkeauth.php' => config_path('larkeauth.php.larkeauth')
+            ], 'larke-auth-config');
 
             $this->commands([
                 Commands\Install::class,

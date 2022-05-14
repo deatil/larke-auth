@@ -114,7 +114,7 @@ class EnforcerManager implements Factory
      */
     protected function getConfig($name)
     {
-        return $this->app['config']["larkeauth.{$name}"];
+        return $this->app['config']["larkeauth.guards.{$name}"];
     }
 
     /**
