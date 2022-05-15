@@ -304,24 +304,27 @@ In the larkeauth file, it should be like this:
 ```php
 return [
     'default' => 'basic',
+    
+    'guards' => [
+        'basic' => [
+            'model' => [
+                // ...
+            ],
 
-    'basic' => [
-        'model' => [
+            'adapter' => Larke\Auth\Adapters\DatabaseAdapter::class,
             // ...
         ],
 
-        'adapter' => Larke\Auth\Adapters\DatabaseAdapter::class,
-        // ...
-    ],
+        'second' => [
+            'model' => [
+                // ...
+            ],
 
-    'second' => [
-        'model' => [
+            'adapter' => Larke\Auth\Adapters\DatabaseAdapter::class,
             // ...
         ],
-
-        'adapter' => Larke\Auth\Adapters\DatabaseAdapter::class,
-        // ...
     ],
+    
 ];
 
 ```
