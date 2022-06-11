@@ -2,8 +2,8 @@
 
 namespace Larke\Auth\Contracts;
 
-use Casbin\Persist\Adapter;
+use Casbin\Persist\BatchAdapter;
 
-interface DatabaseAdapter extends Adapter
+interface DatabaseAdapter extends BatchAdapter
 {
 }

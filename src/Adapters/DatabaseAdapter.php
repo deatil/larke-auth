@@ -127,6 +127,39 @@ class DatabaseAdapter implements DatabaseAdapterContract
     }
 
     /**
+     * adds a policy rule to the storage.
+     * This is part of the Auto-Save feature.
+     *
+     * @param string $sec
+     * @param string $ptype
+     * @param array  $rule
+     */
+    public function addPolicies(string $sec, string $ptype, array $rules): void
+    {
+        if (count($rules) > 0) {
+            foreach ($rules as $rule) {
+                $this->savePolicyLine($ptype, $rule);
+            }
+        }
+    }
+
+    /**
+     * This is part of the Auto-Save feature.
+     *
+     * @param string $sec
+     * @param string $ptype
+     * @param array  $rule
+     */
+    public function removePolicies(string $sec, string $ptype, array $rules): void
+    {
+        if (count($rules) > 0) {
+            foreach ($rules as $rule) {
+                $this->removePolicy($sec, $ptype, $rule);
+            }
+        }
+    }
+    
+    /**
      * RemoveFilteredPolicy removes policy rules that match the filter from the storage.
      * This is part of the Auto-Save feature.
      *
