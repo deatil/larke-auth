@@ -38,6 +38,9 @@ return [
 
                 // Rule table name.
                 'rules_table' => 'larke_rules',
+
+                // Rule Model observer.
+                'model_observer' => Larke\Auth\Observers\RuleObserver::class,
             ],
 
             'log' => [

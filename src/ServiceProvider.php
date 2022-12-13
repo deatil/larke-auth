@@ -2,6 +2,7 @@
 
 namespace Larke\Auth;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 use Larke\Auth\Models\Rule;
@@ -41,7 +42,17 @@ class ServiceProvider extends BaseServiceProvider
      */
     protected function bootObserver()
     {
-        Rule::observe(new RuleObserver());
+        $enforcer = $this->app["enforcer"];
+        
+        $guard = $enforcer->getDefaultGuard();
+        $config = $this->app['config']["larkeauth.guards.{$guard}"];
+        
+        $ruleObserver = Arr::get($config, 'database.model_observer');
+        if (empty($ruleObserver) || !class_exists($ruleObserver)) {
+            $ruleObserver = RuleObserver::class;
+        }
+        
+        Rule::observe(new $ruleObserver());
     }
 
     /**
