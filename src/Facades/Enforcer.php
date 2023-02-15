@@ -1,5 +1,7 @@
 <?php
 
+declare (strict_types = 1);
+
 namespace Larke\Auth\Facades;
 
 use Illuminate\Support\Facades\Facade;

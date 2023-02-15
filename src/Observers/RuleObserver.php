@@ -1,5 +1,7 @@
 <?php
 
+declare (strict_types = 1);
+
 namespace Larke\Auth\Observers;
 
 use Larke\Auth\Models\Rule;

@@ -1,5 +1,7 @@
 <?php
 
+declare (strict_types = 1);
+
 namespace Larke\Auth\Commands;
 
 use Illuminate\Console\Command;
@@ -7,6 +9,8 @@ use Larke\Auth\Facades\Enforcer;
 
 /**
  * PolicyAdd class.
+ *
+ * > php artisan larke-auth:group-add --policy=policy
  */
 class GroupAdd extends Command
 {
@@ -15,7 +19,7 @@ class GroupAdd extends Command
      *
      * @var string
      */
-    protected $signature = 'group:add
+    protected $signature = 'larke-auth:group-add
                             {policy : the rule separated by commas}';
 
     /**

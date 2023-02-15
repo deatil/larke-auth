@@ -1,5 +1,7 @@
 <?php
 
+declare (strict_types = 1);
+
 namespace Larke\Auth\Commands;
 
 use Larke\Auth\Facades\Enforcer;
@@ -7,6 +9,8 @@ use Illuminate\Console\Command;
 
 /**
  * RoleAssign class.
+ *
+ * > php artisan larke-auth:role-assign --user=user --role=role
  */
 class RoleAssign extends Command
 {
@@ -15,7 +19,7 @@ class RoleAssign extends Command
      *
      * @var string
      */
-    protected $signature = 'role:assign
+    protected $signature = 'larke-auth:role-assign
                             {user : the identifier of user}
                             {role : the name of role}';
 

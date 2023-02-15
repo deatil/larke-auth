@@ -1,5 +1,7 @@
 <?php
 
+declare (strict_types = 1);
+
 namespace Larke\Auth\Contracts;
 
 /**
@@ -7,8 +9,5 @@ namespace Larke\Auth\Contracts;
  */
 interface AuthUser
 {
-    public function getIdentifier()
-    {
-        return false;
-    }
+    public function getIdentifier();
 }

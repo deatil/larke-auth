@@ -1,15 +1,17 @@
 <?php
 
+declare (strict_types = 1);
+
 namespace Larke\Auth;
 
 use InvalidArgumentException;
 
 use Illuminate\Support\Arr;
 
-use Casbin\Bridge\Logger\LoggerBridge;
+use Casbin\Log\Log;
 use Casbin\Enforcer;
 use Casbin\Model\Model;
-use Casbin\Log\Log;
+use Casbin\Bridge\Logger\LoggerBridge;
 
 use Larke\Auth\Contracts\Factory;
 use Larke\Auth\Models\Rule;
@@ -90,19 +92,23 @@ class EnforcerManager implements Factory
 
         $model = new Model();
         $configType = Arr::get($config, 'model.config_type');
-        if ('file' == $configType) {
+        
+        if ($configType == 'file') {
             $model->loadModel(Arr::get($config, 'model.config_file_path', ''));
-        } elseif ('text' == $configType) {
+        } elseif ($configType == 'text') {
             $model->loadModelFromText(Arr::get($config, 'model.config_text', ''));
         }
+        
         $adapter = Arr::get($config, 'adapter');
-        if (!is_null($adapter)) {
+        if (! is_null($adapter)) {
             $adapter = $this->app->make($adapter, [
                 'eloquent' => new Rule([], $name),
             ]);
         }
+        
+        $enabled = Arr::get($config, 'log.enabled', false);
 
-        return new Enforcer($model, $adapter, Arr::get($config, 'log.enabled', false));
+        return new Enforcer($model, $adapter, $enabled);
     }
 
     /**
